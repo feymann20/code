@@ -1,5 +1,4 @@
 tabuleiro=[]
-inimigo=0
 a=0
 b=0
 c=0
@@ -34,5 +33,4 @@ for i in range(8):
                 d=1
             else:
                 break
-
 print(a+b+c+d)
