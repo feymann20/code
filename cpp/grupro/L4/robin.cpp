@@ -11,12 +11,17 @@ int main(){
     }
     for (i = 0; i < m; i++)
     {
-    aux=processo.front()-1;
+    if (!processo.empty())
+    {
+        aux=processo.front()-1;
     processo.pop();
         if (aux>0)
         {
             processo.push(aux);
         }
+    }
+    
+    
     }
     if(processo.size()!=0){
         cout<<processo.size()<<endl;
@@ -24,7 +29,9 @@ int main(){
         {
             cout << processo.front();
             processo.pop();
+        if (!processo.empty()){
             cout<< " ";
+        }
         }
      cout<<endl;   
     }
