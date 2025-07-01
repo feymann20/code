@@ -11,12 +11,12 @@ for _ in range(M):
 for k,l in tp:
     p=0
     nave_morta=0
-    for m in range(k+1):
-        if naves[k-m][l]==1:
+    i=0
+    while(p==0 and i<=k):
+        if naves[k-i][l]==1:
             nave_morta=1
-            naves[k-m][l]=0
+            naves[k-i][l]=0
             p=1
-        if p==1:
-            break
+        i+=1
     total_naves_mortas=total_naves_mortas+nave_morta
 print(total_naves_mortas)
