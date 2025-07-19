@@ -1,51 +1,50 @@
 #include<iostream>
 #include<stack>
-#include <queue>
+#include<queue>
 #include<string>
+#include <algorithm>
 using namespace std;
 
 int main(){
-    int n,m,i;
-    string num1,num2,a,string1;
-    int p=0,b=0;
-    string bloco;
-    stack<string> q,f;
+    int n,m;
+    int bloco1,bloco2,a,string1,inverso;
+    int pontos=0;
+    bool gameover=false;
+    int bloco,altura=1;
+    stack<int> q,f;
     cin>>n>>m;
-    for(i=0;i<n;i++){
+    for(int i=0;i<n;i++){
         cin>>bloco;
         q.push(bloco);
     }
-    for (i = 0; i < n; i++)
+    while(!q.empty() && !gameover)
     {
-        a="";
-        num1=q.top();
-        string1=num1;
+        bloco1=q.top();
         q.pop();
-            if (q.size()!=0)
+        inverso=abs(bloco1-111);
+            if (!q.empty())
             {
-                num2=q.top();
-                a=num1+num2;
-                if (a=="100011"||a=="011100" || a=="001110"||a=="110001" || a=="010101"|| a=="101010")
+                bloco2=q.top();
+                if (bloco2 == inverso)
                 {
-                    p=p+10;
+                    pontos=pontos+10;
                     q.pop();
                 }
                 else{
-                    f.push(string1);
-                    cout<< f.top() <<endl;
-                    if(f.size()>=m){
-                        cout<< "game over"<<endl;
-                        b=1;
-                        break;
-                    }
+                    altura++;
                 }
 
             }
-    }
+            if (altura >= m){
+                cout << "game over" << endl;
+                    gameover = true;
+                }
+        }       
     
     
-    if(b==0){
-        cout << p << endl;
+    
+    if(!gameover){
+        cout << pontos << endl;
     }
-
 }
+
